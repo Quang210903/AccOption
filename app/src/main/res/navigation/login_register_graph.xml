@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_register_graph"
+    app:startDestination="@id/introductionFragments">
+
+    <fragment
+        android:id="@+id/introductionFragments"
+        android:name="com.example.smartlibrary1.fragments.loginregister.IntroductionFragments"
+        android:label="IntroductionFragments"
+        tools:layout="@layout/fragment_introduction">
+        <action
+            android:id="@+id/action_introductionFragments_to_accoutOptionsFragment"
+            app:destination="@id/accoutOptionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.smartlibrary1.fragments.loginregister.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_resisterFragments"
+            app:destination="@id/resisterFragments"
+            app:popUpTo="@id/accoutOptionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resisterFragments"
+        android:name="com.example.smartlibrary1.fragments.loginregister.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_resisterFragments_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/accoutOptionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accoutOptionsFragment"
+        android:name="com.example.smartlibrary1.fragments.loginregister.AccoutOptionsFragment"
+        android:label="AccoutOptionsFragment"
+        tools:layout="@layout/fragment_account_options">
+        <action
+            android:id="@+id/action_accoutOptionsFragment_to_resisterFragments"
+            app:destination="@id/resisterFragments" />
+        <action
+            android:id="@+id/action_accoutOptionsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+</navigation>
