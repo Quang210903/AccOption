@@ -13,8 +13,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.smartlibrary1.R
 import com.example.smartlibrary1.activities.mylibraryActivity1
 import com.example.smartlibrary1.databinding.FragmentLoginBinding
+import com.example.smartlibrary1.dialog.setupBottomSheetsDialog
 import com.example.smartlibrary1.util.Resource
 import com.example.smartlibrary1.viewmodel.LoginViewmodel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @Suppress("DEPRECATION")
@@ -46,6 +48,32 @@ class LoginFragment:Fragment(R.layout.fragment_login) {
                 val email = edemaillogin.text.toString().trim()
                 val password = edpasswordlogin.text.toString().trim()
                 viewModel.login(email, password)
+            }
+        }
+
+        binding.tvForgotpasswordlogin.setOnClickListener {
+            setupBottomSheetsDialog {email ->
+
+
+                viewModel.resetPassword(email)
+
+            }
+
+        }
+        lifecycleScope.launchWhenStarted {
+            viewModel.resetPassword.collect {
+                when (it) {
+                    is Resource.Loading -> {
+                    }
+                    is Resource.Success -> {
+                        Snackbar.make(requireView(), "reset password link sent to your email", Snackbar.LENGTH_LONG).show()
+
+                    }
+                    is Resource.Error -> {
+                        Snackbar.make(requireView(), "Error: ${it.message}", Snackbar.LENGTH_LONG).show()
+                    }
+                    else -> Unit
+                }
             }
         }
         lifecycleScope.launchWhenStarted {
