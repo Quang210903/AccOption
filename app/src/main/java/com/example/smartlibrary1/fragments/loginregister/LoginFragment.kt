@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.smartlibrary1.R
-import com.example.smartlibrary1.activities.mylibraryActivity1
+import com.example.smartlibrary1.activities.mylibraryActivity
 import com.example.smartlibrary1.databinding.FragmentLoginBinding
 import com.example.smartlibrary1.dialog.setupBottomSheetsDialog
 import com.example.smartlibrary1.util.Resource
@@ -84,7 +84,7 @@ class LoginFragment:Fragment(R.layout.fragment_login) {
                     }
                     is Resource.Success -> {
                         binding.buttonloginlogin.revertAnimation()
-                        Intent(requireActivity(), mylibraryActivity1::class.java).also { intent ->
+                        Intent(requireActivity(), mylibraryActivity::class.java).also { intent ->
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
 

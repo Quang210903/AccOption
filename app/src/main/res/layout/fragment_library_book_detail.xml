@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:id="@+id/booKImage"
+            android:layout_width="0dp"
+            android:layout_height="350dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardElevation="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+        </ImageView>
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageClose"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:padding="5dp"-->
+<!--            android:src="@drawable/ic_back"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            tools:ignore="MissingConstraints"-->
+<!--            tools:layout_editor_absoluteY="0dp" />-->
+
+
+        <LinearLayout
+            android:id="@+id/linearTitlePrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="35dp"
+            app:layout_constraintTop_toBottomOf="@id/booKImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/bookTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/h3"
+                android:textStyle="bold"
+                android:text="Title"/>
+
+        </LinearLayout>
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linearAuthor"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/linearTitlePrice"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/bookAuthor"-->
+<!--                style="@style/h3"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Author"-->
+<!--                android:textStyle="bold" />-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linearGen"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/linearAuthor"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/bookGenre"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                style="@style/h3"-->
+<!--                android:textStyle="bold"-->
+<!--                android:text="Genre"/>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linearDes"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/linearGen"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/bookDes"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                style="@style/h3"-->
+<!--                android:textStyle="bold"-->
+<!--                android:text="Description"/>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linearNote"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/linearDes"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/bookNote"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                style="@style/h3"-->
+<!--                android:textStyle="bold"-->
+<!--                android:text="Note"/>-->
+
+<!--        </LinearLayout>-->
+
+        <TextView
+            android:id="@+id/bookAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/h3"
+            android:textColor="@color/g_gray700"
+            app:layout_constraintTop_toBottomOf="@id/linearTitlePrice"
+            app:layout_constraintStart_toStartOf="@id/linearTitlePrice"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="Author name"/>
+
+        <View
+            android:id="@+id/topLine"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/g_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bookAuthor"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/linearProductPref"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="@id/topLine"
+            app:layout_constraintEnd_toEndOf="@id/topLine"
+            app:layout_constraintTop_toBottomOf="@id/topLine"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Genre"
+                android:id="@+id/bookGenre"
+                android:layout_margin="10dp">
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/bookDecription"
+                android:text="Description"
+                android:layout_margin="10dp">
+            </TextView>
+
+
+
+        </LinearLayout>
+
+<!--        <TextView-->
+<!--            android:id="@+id/noteTil"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="@id/linearProductPref"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/linearProductPref"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/linearProductPref"-->
+<!--            android:text="Note"-->
+<!--            style="@style/h3"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:layout_marginStart="10dp"/>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linearNote"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            app:layout_constraintStart_toStartOf="@id/linearProductPref"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/linearProductPref"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/noteTil"-->
+<!--            android:layout_marginTop="10dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Date"-->
+<!--                android:id="@+id/date_note"-->
+<!--                android:layout_margin="10dp">-->
+<!--            </TextView>-->
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Time"-->
+<!--                android:id="@+id/time_note"-->
+<!--                android:layout_margin="10dp">-->
+<!--            </TextView>-->
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Page"-->
+<!--                android:id="@+id/num_page"-->
+<!--                android:layout_margin="10dp">-->
+<!--            </TextView>-->
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Note"-->
+<!--                android:id="@+id/note"-->
+<!--                android:layout_margin="10dp">-->
+<!--            </TextView>-->
+
+
+
+<!--        </LinearLayout>-->
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
