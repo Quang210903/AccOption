@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.smartlibrary1">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
 
     <application
         android:name=".SmartLibraryApplication"
@@ -11,7 +18,7 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.Smartlibrary1">
         <activity
-            android:name=".activities.mylibraryActivity1"
+            android:name=".activities.mylibraryActivity"
             android:exported="false" />
         <activity
             android:name=".activities.mylibraryActivity"

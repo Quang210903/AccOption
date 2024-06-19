@@ -20,6 +20,17 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+
+    <string name="title">Title</string>
+    <string name="message">Message</string>
+    <string name="add_plan">Add Plan</string>
+    <string name="titleee">Title</string>
+    <string name="messageee">Message</string>
+    <string name="save">Save</string>
+    <string name="pause">Pause</string>
+    <string name="delete">Delete</string>
+    <string name="back">back</string>
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/library_graph"
+    app:startDestination="@id/fragment_home">
+
+    <fragment
+        android:id="@+id/fragment_home"
+        android:name="com.example.smartlibrary1.fragments.library.fragment_home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_book_detail"
+            app:destination="@id/fragment_book_detail" />
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_search"
+            app:destination="@id/fragment_search" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_profile"
+        android:name="com.example.smartlibrary1.fragments.library.fragment_profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/fragment_library"
+        android:name="com.example.smartlibrary1.fragments.library.fragment_library"
+        android:label="fragment_library"
+        tools:layout="@layout/fragment_library" >
+        <action
+            android:id="@+id/action_fragment_library_to_fragment_book_detail"
+            app:destination="@id/fragment_book_detail" />
+        <action
+            android:id="@+id/action_fragment_library_to_fragment_library_book_detail"
+            app:destination="@id/fragment_library_book_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_search"
+        android:name="com.example.smartlibrary1.fragments.library.fragment_search"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_fragment_search_to_fragment_book_detail"
+            app:destination="@id/fragment_book_detail" />
+        <argument
+            android:name="searchstring"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_book_detail"
+        android:name="com.example.smartlibrary1.fragments.library.fragment_book_detail"
+        android:label="fragment_book_detail"
+        tools:layout="@layout/fragment_book_detail"
+        >
+        <argument
+            android:name="book"
+            app:argType="com.example.smartlibrary1.data.Book" />
+        <argument
+            android:name="number"
+            app:argType="integer" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_library_book_detail"
+        android:name="com.example.smartlibrary1.fragments.library.fragment_library_book_detail"
+        android:label="fragment_library_book_detail"
+        tools:layout="@layout/fragment_library_book_detail" >
+        <argument
+            android:name="librarybook"
+            app:argType="com.example.smartlibrary1.data.BookDetail" />
+    </fragment>
+</navigation>
