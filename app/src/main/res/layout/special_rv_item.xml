@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
-             />
+            />
 
         <TextView
             android:id="@+id/tvSpecialProductName"
@@ -31,55 +31,23 @@
             app:layout_constraintStart_toEndOf="@id/imageSpecialRvItem"
             app:layout_constraintTop_toTopOf="@id/imageSpecialRvItem"
             android:layout_marginTop="7dp"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="10dp"
             android:fontFamily="@font/poppins_thin"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="17sp"
-            android:maxLines="2"/>
+            android:textSize="13sp"
+            android:maxLines="4"/>
 
-<!--        <TextView-->
-<!--            android:id="@+id/tvSpecialPrdouctPrice"-->
-<!--            android:layout_width="80dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Price"-->
-<!--            app:layout_constraintStart_toStartOf="@id/tvSpecialProductName"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/tvSpecialProductName"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="12sp"-->
-<!--            android:fontFamily="@font/sf_pro_display"/>-->
-
-        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
-            android:id="@+id/btn_add_to_cart"
-            android:layout_width="77dp"
-            android:layout_height="25dp"
-            android:background="@drawable/blue_background"
-            android:fontFamily="@font/poppins_light"
-            android:text="Add "
-            android:textColor="@color/white"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSpecialProductName"
-            android:layout_marginTop="10dp"
-            android:textAllCaps="false"
-            />
-
-        <LinearLayout
-            android:layout_width="23dp"
-            android:layout_height="23dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/icon_background"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:src="@drawable/ic_favorite"
-                android:layout_gravity="center"
-                android:layout_marginTop="7dp"
-                />
-        </LinearLayout>
+        <!--        <TextView-->
+        <!--            android:id="@+id/tvSpecialPrdouctPrice"-->
+        <!--            android:layout_width="80dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Price"-->
+        <!--            app:layout_constraintStart_toStartOf="@id/tvSpecialProductName"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/tvSpecialProductName"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            android:textSize="12sp"-->
+        <!--            android:fontFamily="@font/sf_pro_display"/>-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

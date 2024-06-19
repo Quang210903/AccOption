@@ -16,7 +16,7 @@
         <RelativeLayout
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:background="@drawable/shape_toolbar">
 
 
@@ -28,7 +28,9 @@
                 android:layout_alignParentBottom="true"
                 android:text="My Library"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:fontFamily="@font/poppins_thin"
+                android:layout_marginBottom="10dp"/>
 
         </RelativeLayout>
 

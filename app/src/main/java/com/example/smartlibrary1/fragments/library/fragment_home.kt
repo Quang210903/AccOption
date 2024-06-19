@@ -47,11 +47,12 @@ class fragment_home : Fragment() {
             if (enteredtext != "") {
                 viewModel.fetchSpecialBook(linkSearchBook,2)
 
+
             }
-//            val b = Bundle().apply {
-//                putString("searchstring",enteredtext)
-//            }
-//            findNavController().navigate(R.id.action_fragment_home_to_fragment_search,b)
+            else {
+                binding.rvSearchResult.visibility = View.GONE
+            }
+
         }
         binding.buttonImageSearch.setOnClickListener {
             findNavController().navigate(R.id.action_fragment_home_to_fragment_search)
@@ -87,6 +88,7 @@ class fragment_home : Fragment() {
                     is Resource.Error -> TODO()
                     is Resource.Success -> {
                         specialBookAdapter.differ.submitList(it.data)
+                        binding.rvSearchResult.visibility = View.VISIBLE
                     }
                     is Resource.Unspecified -> TODO()
                 }
