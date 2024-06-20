@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.navigation.fragment.findNavController
@@ -79,10 +80,43 @@ class fragment_library : Fragment() {
         val bookList = db.getAllBooks()
         libraryAdapter.differ.submitList(bookList)
 
+        binding.morebtn.setOnClickListener {
+            showPopupMenu(it)
+        }
 
 
 
+    }
 
+    private fun showPopupMenu(view: View?) {
+        val popupMenu = PopupMenu(requireContext(), view)
+        popupMenu.menuInflater.inflate(R.menu.menu_library_options, popupMenu.menu)
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.sortA2Z -> {
+                    handleOption1()
+                    true
+                }
+                R.id.sortZ2A -> {
+                    handleOption2()
+                    true
+                }
+                else -> false
+            }
+        }
+        popupMenu.show()
+    }
+
+    private fun handleOption1() {
+        val bookList = db.getAllBooks()
+        val sortedBookList = bookList.sortedBy { it.title }
+        libraryAdapter.differ.submitList(sortedBookList)
+    }
+
+    private fun handleOption2() {
+        val bookList = db.getAllBooks()
+        val sortedBookList = bookList.sortedByDescending { it.title }
+        libraryAdapter.differ.submitList(sortedBookList)
     }
 
     private fun setUpLibraryBook() {

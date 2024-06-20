@@ -17,12 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.Smartlibrary1">
+        <receiver android:name=".fragments.library.Notification"
+            android:enabled="true"/>
         <activity
             android:name=".activities.mylibraryActivity"
             android:exported="false" />
-        <activity
-            android:name=".activities.mylibraryActivity"
-            android:exported="false" />
+        <activity android:name=".fragments.library.Add_Plan"
+            android:exported="false"/>
+        <activity android:name=".fragments.library.NoteBook"
+            android:exported="false"/>
         <activity
             android:name=".activities.LoginResisterActivities"
             android:exported="true">
