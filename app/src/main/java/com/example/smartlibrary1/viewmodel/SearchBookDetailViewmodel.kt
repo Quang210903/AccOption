@@ -41,6 +41,7 @@ class SearchBookDetailViewmodel (val book: Book) : ViewModel(){
                 }
                 println("Da duoc goi 2")
 
+
                 val author = ""
                 val dataTitleElement = document.selectFirst(".summary-inner")
                 val title = dataTitleElement?.getElementsByTag("h1")?.text() ?: "Unkown titile"

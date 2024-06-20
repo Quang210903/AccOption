@@ -41,9 +41,11 @@ class SearchViewModel : ViewModel() {
                     // Process each element as needed
                     i++
 
+                    val substringToRemove = "Thêm vào giỏ hàng"
                     val image = element.getElementsByTag("img").attr("data-wood-src")
                     val a = element.getElementsByTag("a").text()
-                    val title = a.substringAfter('%')
+                    val title1 = a.substringAfter('%')
+                    val title = title1.replace(substringToRemove, "")
                     val author = ""
                     val url = element.getElementsByTag("a").attr("href")
                     val genre = ""
