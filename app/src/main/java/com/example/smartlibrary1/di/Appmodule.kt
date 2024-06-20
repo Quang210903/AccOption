@@ -1,5 +1,9 @@
 package com.example.smartlibrary1.di
 
+import android.app.Application
+import android.content.Context.MODE_PRIVATE
+import com.example.smartlibrary1.SmartLibraryApplication
+import com.example.smartlibrary1.util.Constants.INTRODUCTION_SP
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
@@ -20,5 +24,10 @@ class Appmodule {
     @Provides
     @Singleton
     fun provideFirebaseFirestoreDatabase () = Firebase.firestore
+
+    @Provides
+    fun provideIntroductionSP(
+        application: Application
+    ) = application.getSharedPreferences(INTRODUCTION_SP, MODE_PRIVATE)
 
 }
