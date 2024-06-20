@@ -53,14 +53,29 @@
             app:layout_constraintVertical_bias="0.0"
             />
         <TextView
-            android:id="@+id/tvDonthaveaccount"
+            android:id="@+id/noaccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/h2"
             app:layout_constraintTop_toBottomOf="@id/tvLetslogin"
             app:layout_constraintStart_toStartOf="@id/tvLetslogin"
             android:gravity="center"
-            android:text="Don't have an account? Register"
+            android:text="Don't have an account? "
+            android:textStyle="italic"
+            android:textAlignment="center"
+            android:layout_marginTop="15dp"
+            />
+        <TextView
+            android:id="@+id/tvDonthaveaccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvLetslogin"
+            app:layout_constraintStart_toEndOf="@id/noaccount"
+            android:gravity="center"
+            android:text="Register"
+            android:textStyle="bold|italic"
+            android:textSize="17sp"
+            android:fontFamily="@font/poppins_light"
             android:textAlignment="center"
             android:layout_marginTop="15dp"
             />
