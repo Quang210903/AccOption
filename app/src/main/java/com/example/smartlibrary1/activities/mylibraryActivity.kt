@@ -10,7 +10,9 @@ import com.example.smartlibrary1.databinding.ActivityMylibraryBinding
 
 import androidx.navigation.ui.setupWithNavController
 
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 class mylibraryActivity : AppCompatActivity() {
 
     val binding by lazy {
