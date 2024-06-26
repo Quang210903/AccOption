@@ -92,17 +92,18 @@
         app:tabSelectedTextColor="@color/black"
         app:tabTextAppearance="@style/tabLayout_text"
         tools:ignore="SpeakableTextPresentCheck" />
+
+
     <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintTop_toBottomOf="@id/homeHeader"
         android:id="@+id/rvSearchResult"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        />
-
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeHeader" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpagerHome"
