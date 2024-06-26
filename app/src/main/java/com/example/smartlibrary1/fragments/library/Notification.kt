@@ -6,17 +6,18 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.core.app.NotificationCompat
 import com.example.smartlibrary1.R
 import com.example.smartlibrary1.activities.LoginResisterActivities
-import com.example.smartlibrary1.activities.mylibraryActivity
+
 
 
 const val channelID = "channel1"
 const val titleExtra = "titleExtra"
 const val messageExtra = "messageExtra"
+
+
 
 class Notification : BroadcastReceiver()
 {

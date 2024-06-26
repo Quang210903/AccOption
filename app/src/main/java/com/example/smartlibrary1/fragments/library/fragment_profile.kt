@@ -1,60 +1,162 @@
 package com.example.smartlibrary1.fragments.library
-
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.smartlibrary1.R
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.example.smartlibrary1.data.User
+import com.example.smartlibrary1.databinding.FragmentProfileBinding
+import com.example.smartlibrary1.dialog.setupBottomSheetsDialog
+import com.example.smartlibrary1.util.Resource
+import com.example.smartlibrary1.viewmodel.ProfileViewmodel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [fragment_profile.newInstance] factory method to
- * create an instance of this fragment.
- */
+@Suppress("DEPRECATION")
+@AndroidEntryPoint
 class fragment_profile : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding: FragmentProfileBinding
+    private val viewModel by viewModels<ProfileViewmodel>()
+    private lateinit var imageActivityResultLauncher: ActivityResultLauncher<Intent>
+
+    private var imageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+        imageActivityResultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                imageUri = it.data?.data
+                Glide.with(this).load(imageUri).into(binding.imageUser)
+            }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+    ): View {
+        binding = FragmentProfileBinding.inflate(inflater)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_profile.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_profile().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.user.collectLatest {
+                when (it) {
+                    is Resource.Loading -> {
+                        showUserLoading()
+                    }
+                    is Resource.Success -> {
+                        hideUserLoading()
+                        showUserInformation(it.data!!)
+                    }
+                    is Resource.Error -> {
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    }
+                    else -> Unit
                 }
             }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.updateInfo.collectLatest {
+                when (it) {
+                    is Resource.Loading -> {
+                        binding.buttonSave.startAnimation()
+                    }
+                    is Resource.Success -> {
+                        binding.buttonSave.revertAnimation()
+                        findNavController().navigateUp()
+                    }
+                    is Resource.Error -> {
+                        binding.buttonSave.revertAnimation()
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    }
+                    else -> Unit
+                }
+            }
+        }
+
+        binding.tvUpdatePassword.setOnClickListener {
+            setupBottomSheetsDialog {
+
+            }
+        }
+
+        binding.buttonSave.setOnClickListener {
+            binding.apply {
+                val firstName = edFirstName.text.toString().trim()
+                val lastName = edLastName.text.toString().trim()
+                val email = edEmail.text.toString().trim()
+                val user = User(firstName, lastName, email)
+                viewModel.updateUser(user, imageUri)
+            }
+        }
+
+        binding.imageEdit.setOnClickListener {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+            imageActivityResultLauncher.launch(intent)
+        }
+
+    }
+
+    private fun showUserInformation(data: User) {
+        binding.apply {
+            Glide.with(this@fragment_profile).load(data.imagePath).error(ColorDrawable(Color.BLACK)).into(imageUser)
+            edFirstName.setText(data.firstname)
+            edLastName.setText(data.lastname)
+            edEmail.setText(data.email)
+        }
+    }
+
+    private fun hideUserLoading() {
+        binding.apply {
+            progressbarProfile.visibility = View.GONE
+            imageUser.visibility = View.VISIBLE
+            imageEdit.visibility = View.VISIBLE
+            edFirstName.visibility = View.VISIBLE
+            edLastName.visibility = View.VISIBLE
+            edEmail.visibility = View.VISIBLE
+            tvUpdatePassword.visibility = View.VISIBLE
+            buttonSave.visibility = View.VISIBLE
+        }
+    }
+
+    private fun showUserLoading() {
+        binding.apply {
+            progressbarProfile.visibility = View.VISIBLE
+            imageUser.visibility = View.INVISIBLE
+            imageEdit.visibility = View.INVISIBLE
+            edFirstName.visibility = View.INVISIBLE
+            edLastName.visibility = View.INVISIBLE
+            edEmail.visibility = View.INVISIBLE
+            tvUpdatePassword.visibility = View.INVISIBLE
+            buttonSave.visibility = View.INVISIBLE
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+

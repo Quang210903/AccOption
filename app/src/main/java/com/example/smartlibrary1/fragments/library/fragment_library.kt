@@ -2,30 +2,20 @@ package com.example.smartlibrary1.fragments.library
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewmodel.CreationExtras
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.smartlibrary1.R
-import com.example.smartlibrary1.adapters.BestBookAdapter
 import com.example.smartlibrary1.adapters.LibraryAdapter
-import com.example.smartlibrary1.data.Book
-import com.example.smartlibrary1.data.BookDetail
 import com.example.smartlibrary1.databinding.FragmentLibraryBinding
 import com.example.smartlibrary1.helper.BookDatabaseHelper
-import com.example.smartlibrary1.util.Resource
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 
 
 class fragment_library : Fragment() {

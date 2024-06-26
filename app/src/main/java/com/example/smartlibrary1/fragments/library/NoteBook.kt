@@ -1,16 +1,14 @@
 package com.example.smartlibrary1.fragments.library
 
 import android.os.Bundle
-import android.widget.ImageButton
-
-import androidx.appcompat.app.AppCompatActivity
-
-import com.example.smartlibrary1.R
 import android.widget.Toast
-
+import androidx.appcompat.app.AppCompatActivity
 import com.example.smartlibrary1.data.Note
 import com.example.smartlibrary1.databinding.ActivityNoteBookBinding
 import com.example.smartlibrary1.helper.BookDatabaseHelper
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 
 class NoteBook : AppCompatActivity() {
 

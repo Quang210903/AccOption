@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/library_graph"
-    app:startDestination="@id/userAccountFragment">
+    app:startDestination="@id/fragment_home">
 
     <fragment
         android:id="@+id/fragment_home"
@@ -17,11 +17,6 @@
             android:id="@+id/action_fragment_home_to_fragment_search"
             app:destination="@id/fragment_search" />
     </fragment>
-    <fragment
-        android:id="@+id/fragment_profile"
-        android:name="com.example.smartlibrary1.fragments.library.fragment_profile"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/fragment_library"
         android:name="com.example.smartlibrary1.fragments.library.fragment_library"
@@ -71,7 +66,17 @@
             app:argType="com.example.smartlibrary1.data.BookDetail" />
     </fragment>
     <fragment
-        android:id="@+id/userAccountFragment"
-        android:name="com.example.smartlibrary1.fragments.settings.UserAccountFragment"
-        android:label="UserAccountFragment" />
+        android:id="@+id/fragment_profile"
+        android:name="com.example.smartlibrary1.fragments.library.fragment_profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile"/>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.smartlibrary1.fragments.setting.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_fragment_profile"
+            app:destination="@id/fragment_profile" />
+    </fragment>
 </navigation>

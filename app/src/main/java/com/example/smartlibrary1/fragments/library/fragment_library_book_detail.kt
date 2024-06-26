@@ -3,29 +3,20 @@ package com.example.smartlibrary1.fragments.library
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.smartlibrary1.R
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-
 import com.example.smartlibrary1.data.BookDetail
 import com.example.smartlibrary1.data.Note
 import com.example.smartlibrary1.databinding.FragmentLibraryBookDetailBinding
 import com.example.smartlibrary1.helper.BookDatabaseHelper
-import com.example.smartlibrary1.util.Resource
-import com.example.smartlibrary1.util.hideBottomNavigationView
-import com.example.smartlibrary1.viewmodel.BookDetailViewModel
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 
 
 class fragment_library_book_detail : Fragment() {

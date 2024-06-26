@@ -1,42 +1,41 @@
 package com.example.smartlibrary1.fragments.library
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import com.example.smartlibrary1.databinding.FragmentSearchBinding
-import com.example.smartlibrary1.util.Resource
-import com.example.smartlibrary1.viewmodel.SearchViewModel
-import com.google.android.gms.vision.text.TextRecognizer
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import android.Manifest
+import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.provider.MediaStore
-
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import com.google.android.gms.vision.Frame
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
-import android.content.ContentValues
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.smartlibrary1.R
 import com.example.smartlibrary1.adapters.BestBookAdapter
-import com.example.smartlibrary1.adapters.LibraryAdapter
-import com.example.smartlibrary1.adapters.SpecialBookAdapter
+import com.example.smartlibrary1.databinding.FragmentSearchBinding
+import com.example.smartlibrary1.util.Resource
 import com.example.smartlibrary1.util.showBottomNavigationView
+import com.example.smartlibrary1.viewmodel.SearchViewModel
+import com.google.android.gms.vision.Frame
+import com.google.android.gms.vision.text.TextRecognizer
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 
+@Suppress("DEPRECATION")
 class fragment_search : Fragment() {
     private lateinit var binding: FragmentSearchBinding
     private val CAMERA_PERMISSION_REQUEST_CODE = 100

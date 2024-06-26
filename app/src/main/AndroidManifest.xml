@@ -21,7 +21,7 @@
             android:enabled="true"/>
         <activity
             android:name=".activities.mylibraryActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity android:name=".fragments.library.Add_Plan"
             android:exported="false"/>
         <activity android:name=".fragments.library.NoteBook"

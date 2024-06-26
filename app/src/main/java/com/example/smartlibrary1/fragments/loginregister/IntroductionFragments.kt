@@ -16,8 +16,8 @@ import com.example.smartlibrary1.viewmodel.IntroductionViewModel
 import com.example.smartlibrary1.viewmodel.IntroductionViewModel.Companion.ACCOUNT_OPTIONS_FRAGMENT
 import com.example.smartlibrary1.viewmodel.IntroductionViewModel.Companion.READING_ACTIVITY
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+
+@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class IntroductionFragments:Fragment(R.layout.fragment_introduction) {
     private lateinit var binding: FragmentIntroductionBinding

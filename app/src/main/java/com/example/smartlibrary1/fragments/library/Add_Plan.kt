@@ -1,5 +1,8 @@
 package com.example.smartlibrary1.fragments.library
 
+
+
+import android.Manifest
 import android.app.AlarmManager
 import android.app.AlertDialog
 import android.app.NotificationChannel
@@ -7,31 +10,22 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.widget.ImageButton
 import android.widget.Toast
-
-
-import android.Manifest
-import android.content.pm.PackageManager
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-
-
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-
-
-
-import com.example.smartlibrary1.R
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.smartlibrary1.data.Plan
 import com.example.smartlibrary1.databinding.ActivityAddPlan2Binding
 import com.example.smartlibrary1.helper.BookDatabaseHelper
-
-
+import dagger.hilt.android.AndroidEntryPoint
 import java.sql.Date
 import java.util.Calendar
+
+@AndroidEntryPoint
 
 class Add_Plan : AppCompatActivity() {
     private val NOTIFICATION_PERMISSION_REQUEST_CODE = 1

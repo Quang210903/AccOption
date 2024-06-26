@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.smartlibrary1.R
 import com.example.smartlibrary1.databinding.FragmentAccountOptionsBinding
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 
 class AccoutOptionsFragment:Fragment(R.layout.fragment_account_options) {
     private lateinit var binding: FragmentAccountOptionsBinding
