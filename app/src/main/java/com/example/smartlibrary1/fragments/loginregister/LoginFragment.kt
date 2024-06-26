@@ -21,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @Suppress("DEPRECATION")
 @AndroidEntryPoint
-class LoginFragment:Fragment(R.layout.fragment_login) {
+class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginViewmodel
@@ -47,27 +47,28 @@ class LoginFragment:Fragment(R.layout.fragment_login) {
             buttonloginlogin.setOnClickListener {
                 val email = edemaillogin.text.toString().trim()
                 val password = edpasswordlogin.text.toString().trim()
-                viewModel.login(email, password)
+
+                if (email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(requireContext(), "Please enter both email and password", Toast.LENGTH_LONG).show()
+                } else {
+                    viewModel.login(email, password)
+                }
             }
         }
 
         binding.tvForgotpasswordlogin.setOnClickListener {
-            setupBottomSheetsDialog {email ->
-
-
+            setupBottomSheetsDialog { email ->
                 viewModel.resetPassword(email)
-
             }
-
         }
+
         lifecycleScope.launchWhenStarted {
             viewModel.resetPassword.collect {
                 when (it) {
                     is Resource.Loading -> {
                     }
                     is Resource.Success -> {
-                        Snackbar.make(requireView(), "reset password link sent to your email", Snackbar.LENGTH_LONG).show()
-
+                        Snackbar.make(requireView(), "Reset password link sent to your email", Snackbar.LENGTH_LONG).show()
                     }
                     is Resource.Error -> {
                         Snackbar.make(requireView(), "Error: ${it.message}", Snackbar.LENGTH_LONG).show()
@@ -76,6 +77,7 @@ class LoginFragment:Fragment(R.layout.fragment_login) {
                 }
             }
         }
+
         lifecycleScope.launchWhenStarted {
             viewModel.login.collect {
                 when (it) {
@@ -87,8 +89,6 @@ class LoginFragment:Fragment(R.layout.fragment_login) {
                         Intent(requireActivity(), mylibraryActivity::class.java).also { intent ->
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
-
-
                         }
                     }
                     is Resource.Error -> {
