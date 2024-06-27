@@ -20,13 +20,10 @@ class BookDatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NA
 
 
         const val TABLE_BOOKS = "books"
-        const val TABLE_USERS = "users"
         const val TABLE_NOTES = "notes"
         const val TABLE_PLANS = "plans"
 
 
-        // Common column names
-        //const val COLUMN_ID = "id"
 
 
         // Books table columns
@@ -39,13 +36,8 @@ class BookDatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NA
         const val COLUMN_BOOK_URL = "url"
 
 
-        // Users table columns
-        const val COLUMN_USER_EMAIL = "email"
-        const val COLUMN_USER_ID = "emailid"
-
         // Note table columns
         const val COLUMN_NOTE_ID = "idNote"
-        const val COLUMN_NOTE_USER_ID = "idUser"
         const val COLUMN_NOTE_BOOK_ID = "idBook"
         const val COLUMN_NOTE_TIME = "time_note"
         const val COLUMN_NOTE_PAGE = "page"
@@ -79,10 +71,6 @@ class BookDatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NA
                 "$COLUMN_BOOK_URL TEXT)"
         db.execSQL(createBooksTableQuery)
 
-        val createUsersTableQuery = "CREATE TABLE $TABLE_USERS (" +
-                "$COLUMN_USER_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "$COLUMN_USER_EMAIL TEXT)"
-        db.execSQL(createUsersTableQuery)
 
         val createNotesTableQuery = "CREATE TABLE $TABLE_NOTES (" +
                 "$COLUMN_NOTE_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -90,9 +78,8 @@ class BookDatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NA
                 "$COLUMN_NOTE_CONTENT TEXT,"  +
                 "$COLUMN_NOTE_DATE TEXT," +
                 "$COLUMN_NOTE_PAGE INTEGER," +
-                "$COLUMN_NOTE_TIME TEXT)"
-//                "FOREIGN KEY ($COLUMN_NOTE_USER_ID) REFERENCES $TABLE_USERS ($COLUMN_USER_ID)," +
-//                "FOREIGN KEY ($COLUMN_NOTE_BOOK_ID) REFERENCES $TABLE_BOOKS ($COLUMN_BOOK_ID))"
+                "$COLUMN_NOTE_TIME TEXT," +
+                "FOREIGN KEY ($COLUMN_NOTE_BOOK_ID) REFERENCES $TABLE_BOOKS ($COLUMN_BOOK_ID))"
         db.execSQL(createNotesTableQuery)
 
         val createPlansTableQuery = "CREATE TABLE $TABLE_PLANS (" +
@@ -104,9 +91,8 @@ class BookDatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NA
                 "$COLUMN_PLAN_MONTH INTEGER," +
                 "$COLUMN_PLAN_YEAR INTEGER," +
                 "$COLUMN_PLAN_HOUR INTEGER,"+
-                "$COLUMN_PLAN_MINUTE INTEGER)"
-//                "FOREIGN KEY ($COLUMN_NOTE_USER_ID) REFERENCES $TABLE_USERS ($COLUMN_USER_ID)," +
-//                "FOREIGN KEY ($COLUMN_NOTE_BOOK_ID) REFERENCES $TABLE_BOOKS ($COLUMN_BOOK_ID))"
+                "$COLUMN_PLAN_MINUTE INTEGER," +
+                "FOREIGN KEY ($COLUMN_NOTE_BOOK_ID) REFERENCES $TABLE_BOOKS ($COLUMN_BOOK_ID))"
         db.execSQL(createPlansTableQuery)
 
     }
@@ -132,15 +118,6 @@ class BookDatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NA
         return id
     }
 
-    fun insertUser(email: String): Long {
-        val db = writableDatabase
-        val values = ContentValues().apply {
-            put(COLUMN_USER_EMAIL, email)
-        }
-        val id = db.insert(TABLE_USERS, null, values)
-        db.close()
-        return id
-    }
 
     fun insertNote(note: Note): Long {
         val db = writableDatabase
@@ -182,14 +159,11 @@ class BookDatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NA
         cursor.use {
             while (it.moveToNext()) {
                 val id = it.getInt(it.getColumnIndex("bookid"))
-//                val idAuthor = it.getInt(it.getColumnIndex("idAuthor"))
-//                val idGenre = it.getInt(it.getColumnIndex("idGenre"))
                 val author = it.getString(it.getColumnIndex("author"))
                 val genre = it.getString(it.getColumnIndex("genre"))
                 val description = it.getString(it.getColumnIndex("description"))
                 val title = it.getString(it.getColumnIndex("title"))
                 val image = it.getString(it.getColumnIndex("image"))
-                val url = it.getString(it.getColumnIndex("url"))
                 val book = BookDetail( title, image, description, author,genre)
                 books.add(book)
                 println(i++)
@@ -200,10 +174,6 @@ class BookDatabaseHelper(context: Context):SQLiteOpenHelper(context, DATABASE_NA
     }
 
 
-    fun deleteBookByTitle(title: String): Boolean {
-        val db = this.writableDatabase
-        return db.delete(TABLE_BOOKS, "$COLUMN_BOOK_TITLE = ?", arrayOf(title)) > 0
-    }
     fun deleteBookById(bookId: Int): Boolean {
         val db = writableDatabase
         return db.delete(TABLE_BOOKS, "$COLUMN_BOOK_ID = ?", arrayOf(bookId.toString())) > 0

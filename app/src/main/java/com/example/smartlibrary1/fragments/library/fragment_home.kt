@@ -108,13 +108,13 @@ class fragment_home : Fragment() {
         val viewPager2Adapter =
             HomeViewPagerAdapter(categoriesFragment, childFragmentManager, lifecycle)
         binding.viewpagerHome.adapter = viewPager2Adapter
-        TabLayoutMediator(binding.tabLayout, binding.viewpagerHome) { tab, position ->
-            when (position) {
-                0 -> tab.text = "Main"
-                1 -> tab.text = "Manga"
-
-            }
-        }.attach()
+//        TabLayoutMediator(binding.tabLayout, binding.viewpagerHome) { tab, position ->
+//            when (position) {
+//                0 -> tab.text = "Main"
+//                1 -> tab.text = "Manga"
+//
+//            }
+//        }.attach()
     }
     private fun constructSearchUrl(query: String): String {
         val baseUrl = "https://nhatrangbooks.com/?s="

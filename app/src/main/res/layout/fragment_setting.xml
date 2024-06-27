@@ -50,6 +50,7 @@
                 android:layout_width="43dp"
                 android:layout_height="43dp"
                 android:src="@color/black"
+                android:layout_marginStart="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,6 +79,7 @@
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:src="@drawable/ic_arrow"
+                android:layout_marginEnd="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tvUserName"
                 app:layout_constraintBottom_toBottomOf="@id/tv_edit_personal_details"
@@ -90,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Notifications"
+            android:layout_marginStart="10dp"
             android:textColor="@color/g_gray700"
             android:textStyle="normal"
             android:layout_marginTop="20dp"
@@ -119,6 +122,7 @@
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/settings_items_background"
                     app:tint="@color/white"
+                    android:layout_marginStart="10dp"
                     android:backgroundTint="#4cd964"/>
 
                 <TextView
@@ -138,7 +142,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:buttonTint="#4cd964"
-                    android:checked="true" />
+                    android:checked="true"
+                    android:layout_marginEnd="10dp"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -151,6 +156,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Regional"
+            android:layout_marginStart="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linearNotifications" />
 
@@ -180,6 +186,7 @@
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/settings_items_background"
                     android:backgroundTint="#ff5823"
+                    android:layout_marginStart="10dp"
                     app:tint="@color/white" />
 
                 <TextView
@@ -198,6 +205,7 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:src="@drawable/ic_arrow"
+                    android:layout_marginEnd="10dp"
                     app:tint="@color/g_blue_gray200"
                     android:layout_gravity="center_vertical" />
             </LinearLayout>
