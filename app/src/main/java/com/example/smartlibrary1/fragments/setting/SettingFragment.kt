@@ -57,7 +57,7 @@ class SettingFragment : Fragment() {
             startActivity(intent)
             requireActivity().finish()
         }
-        binding.tvVersion.text = "Version ${BuildConfig.VERSION_NAME}"
+//        binding.tvVersion.text = "Version ${BuildConfig.VERSION_NAME}"
 
         lifecycleScope.launchWhenStarted {
             viewModel.user.collectLatest {

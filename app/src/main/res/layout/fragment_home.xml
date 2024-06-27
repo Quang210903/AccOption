@@ -78,20 +78,20 @@
 
     </LinearLayout>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rvSearchResult"
-        app:tabIndicator="@null"
-        app:tabMode="scrollable"
-        app:tabRippleColor="@color/white"
-        app:tabSelectedTextColor="@color/black"
-        app:tabTextAppearance="@style/tabLayout_text"
-        tools:ignore="SpeakableTextPresentCheck" />
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:id="@+id/tabLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/rvSearchResult"-->
+<!--        app:tabIndicator="@null"-->
+<!--        app:tabMode="scrollable"-->
+<!--        app:tabRippleColor="@color/white"-->
+<!--        app:tabSelectedTextColor="@color/black"-->
+<!--        app:tabTextAppearance="@style/tabLayout_text"-->
+<!--        tools:ignore="SpeakableTextPresentCheck" />-->
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -111,7 +111,7 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintTop_toBottomOf="@id/rvSearchResult"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 
